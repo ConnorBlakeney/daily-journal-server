@@ -1,28 +1,28 @@
 CREATE TABLE `Entries` (
-	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`date`	DATE NOT NULL,
-	`concept`	TEXT NOT NULL
-	`entry`	TEXT NOT NULL
-	`mood_id`	INTEGER NOT NULL
+	`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`date`  DATE NOT NULL,
+	`concept`  TEXT NOT NULL,
+	`entry`	 TEXT NOT NULL,
+	`mood_id`  INTEGER NOT NULL,
     FOREIGN KEY(`mood_id`) REFERENCES`Moods`(`id`)
 );
 
 CREATE TABLE `Moods` (
-    `id`    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    `label`    TEXT NOT NULL,
+    `id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `label`  TEXT NOT NULL
 );
 
 CREATE TABLE `Tags` (
 	`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`subject`  TEXT NOT NULL,
+	`subject`  TEXT NOT NULL
 );
 
 
 CREATE TABLE `EntryTags` (
-	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`entry_id`	INTEGER NOT NULL,
-	`tag_id`	INTEGER NOT NULL,
-	FOREIGN KEY(`entry_id`) REFERENCES `Entries`(`id`)
+	`id`  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`entry_id`  INTEGER NOT NULL,
+	`tag_id`  INTEGER NOT NULL,
+	FOREIGN KEY(`entry_id`) REFERENCES `Entries`(`id`),
 	FOREIGN KEY(`tag_id`) REFERENCES `Tags`(`id`)
 );
 
@@ -40,4 +40,8 @@ INSERT INTO `Tags` VALUES (null, 'SQL');
 
 INSERT INTO `EntryTags` VALUES (null, 1, 1);
 INSERT INTO `EntryTags` VALUES (null, 2, 2);
+
+SELECT
+    *
+FROM `entries`;
 
